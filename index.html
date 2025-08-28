@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Studio - Design Your Perfect Resume</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="logo">
+            <img
+              src="public/Image 2025-08-23 at 17.03.07_cae19c94.jpg"
+              alt="Resume Studio"
+              class="logo-img"
+            />
+          </div>
+          <div class="nav-buttons">
+            <button class="btn-secondary" onclick="showModal('login')">
+              Login
+            </button>
+            <button class="btn-primary" onclick="showModal('signup')">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <main class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Design your resume to land the job.</h1>
+          <p class="hero-subtitle">
+            Create tailored resumes that match your skills to the perfect job
+            opportunity. Stand out from the crowd with Resume Studio.
+          </p>
+          <button class="btn-cta" onclick="showModal('signup')">
+            Get Started
+          </button>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card card-1">
+            <div class="card-header">Software Engineer</div>
+            <div class="card-content">React • Node.js • Python</div>
+          </div>
+          <div class="floating-card card-2">
+            <div class="card-header">Product Manager</div>
+            <div class="card-content">Strategy • Analytics • Leadership</div>
+          </div>
+          <div class="floating-card card-3">
+            <div class="card-header">UX Designer</div>
+            <div class="card-content">Figma • Research • Prototyping</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Resume Builder Page -->
+    <div id="builder-page" class="page">
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="logo">
+            <img
+              src="public/Image 2025-08-23 at 17.03.07_cae19c94.jpg"
+              alt="Resume Studio"
+              class="logo-img"
+            />
+          </div>
+          <div class="nav-buttons">
+            <button class="btn-secondary" onclick="showLanding()">
+              Back to Home
+            </button>
+            <button class="btn-secondary" onclick="logout()">Logout</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Builder Content -->
+      <main class="builder-main">
+        <div class="builder-container">
+          <div class="builder-header">
+            <h1>Resume Builder</h1>
+            <p>Customize your resume for the perfect job match</p>
+          </div>
+
+          <form class="builder-form" id="resumeForm">
+            <div class="form-section">
+              <h2>Job Details</h2>
+              <div class="form-group">
+                <label for="companyName">Company Name</label>
+                <input
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  placeholder="Enter company name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  placeholder="Enter job title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                <textarea
+                  id="jobDescription"
+                  name="jobDescription"
+                  placeholder="Paste the job description here..."
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h2>Upload Resume</h2>
+              <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                  <div class="upload-icon">📄</div>
+                  <h3>Drag and drop your resume here</h3>
+                  <p>or <span class="upload-link">click to browse</span></p>
+                  <small>PDF files only, max 20MB</small>
+                </div>
+                <input type="file" id="fileInput" accept=".pdf" hidden />
+              </div>
+              <div class="file-info" id="fileInfo" style="display: none">
+                <div class="file-details">
+                  <span class="file-name" id="fileName"></span>
+                  <span class="file-size" id="fileSize"></span>
+                </div>
+                <button
+                  type="button"
+                  class="remove-file"
+                  onclick="removeFile()"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-analyze">Analyze Resume</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Welcome Back</h2>
+          <button class="modal-close" onclick="closeModal('login')">
+            &times;
+          </button>
+        </div>
+        <form class="modal-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required />
+          </div>
+          <button type="submit" class="btn-primary btn-full">Login</button>
+        </form>
+        <p class="modal-footer">
+          Don't have an account?
+          <a href="#" onclick="switchModal('login', 'signup')">Sign up</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Create Account</h2>
+          <button class="modal-close" onclick="closeModal('signup')">
+            &times;
+          </button>
+        </div>
+        <form class="modal-form" onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" required />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" required />
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            Create Account
+          </button>
+        </form>
+        <p class="modal-footer">
+          Already have an account?
+          <a href="#" onclick="switchModal('signup', 'login')">Login</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
