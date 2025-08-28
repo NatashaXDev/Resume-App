@@ -12,3 +12,16 @@ Technologies Used
 	•	HTML5 – Structure and layout of the app
 	•	CSS3 – Styling and responsive design
 	•	JavaScript (ES6) – Interactive elements and data handling
+How to Use
+	1.	Open the app in a browser.
+	2.	Enter your resume details in the input fields.
+	3.	Preview updates instantly in the dynamic resume section.
+	4.	Edit or remove entries as needed.
+
+Live Demo
+
+Check out the live app here: StandOut Resume https://natashaxdev.github.io/Resume-App/
+
+Contribution
+
+This project is currently maintained by Natasha Smith. Feel free to fork, clone, or suggest improvements via pull requests.
