@@ -326,3 +326,7 @@ function initializeEnhancements() {
 
 // Call enhancements after DOM is loaded
 document.addEventListener("DOMContentLoaded", initializeEnhancements);
+
+/*
+Copyright (c) 2025 Natasha Smith Licensed under the MIT License
+*/
